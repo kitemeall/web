@@ -26,7 +26,7 @@ public class CardServlet extends HttpServlet {
         String lang = request.getParameter("lang");
         Locale loc = new Locale("ru");
         res = ResourceBundle.getBundle("lang",loc );
-
+        if(lang != null)
         switch (lang){
                 case "en": loc = new Locale(lang);
                     res = ResourceBundle.getBundle("lang",loc );
@@ -39,14 +39,14 @@ public class CardServlet extends HttpServlet {
         
             
         
-        System.out.println(res.getString("Shop"));
+        
 
         try (PrintWriter out = response.getWriter()) {
            out.print("<!DOCTYPE html>\n" +
 "<html>\n" +
 "<meta charset='utf-8'>\n" +
 "<head>\n" +
-"	<title> интернет-магазин</title>\n" +
+"	<title>"+res.getString("title")+"</title>\n" +
 "	<link rel='stylesheet' type='text/css' href='css/style.css'>\n" +
 "\n" +
 "</head>\n" +
@@ -59,14 +59,14 @@ public class CardServlet extends HttpServlet {
 "   			<li><a href='?lang=ch'>中国</a></li>\n" +
 "	</div>\n" +
 "	\n" +
-"	<h1> магазин</h1>\n" +
+"	<h1>"+res.getString("shop")+"</h1>\n" +
 "\n" +
 "	<div class='menu'>\n" +
 "		<ul>\n" +
-"   			<li><a href='#'>Каталог</a></li>\n" +
-"   			<li><a href='#'>Оплата и доставка</a></li>\n" +
-"   			<li><a href='#'>Корзина</a></li>\n" +
-"   			<li><a href='#'>Контакты</a></li>\n" +
+"   			<li><a href='#'>"+res.getString("catalog")+"</a></li>\n" +
+"   			<li><a href='#'>"+res.getString("payment")+"</a></li>\n" +
+"   			<li><a href='#'>"+res.getString("shopping_cart")+"</a></li>\n" +
+"   			<li><a href='#'>"+res.getString("contacts")+"</a></li>\n" +
 "   		</ul>\n" +
 "\n" +
 "	</div>\n" +
@@ -80,49 +80,21 @@ public class CardServlet extends HttpServlet {
 "			<img src='img/garmin12.jpg'>\n" +
 "		</div>\n" +
 "		<div class='lay_vertical'>\n" +
-"			<div class='price'> 100500 руб </div>\n" +
+"			<div class='price'> 500$ </div>\n" +
 "		\n" +
-"			<div class='buy_button'>Купить</div>\n" +
+"			<div class='buy_button'>"+res.getString("buy")+"</div>\n" +
 "		</div>\n" +
 "	</div>\n" +
 "\n" +
 "	<div class='info'>\n" +
 "		<ul>\n" +
-"   			<li><a href='#' id='description_tab'>Информация</a></li>\n" +
-"   			<li><a href='#' id='propertys_tab'>Характеристики</a></li>\n" +
-"   			<li><a href='#' id='reviews_tab'>Отзывы</a></li>\n" +
+"   			<li><a href='#' id='description_tab'>"+res.getString("information")+"</a></li>\n" +
+"   			<li><a href='#' id='propertys_tab'>"+res.getString("properties")+"</a></li>\n" +
+"   			<li><a href='#' id='reviews_tab'>"+res.getString("reviews")+"</a></li>\n" +
 "   		</ul>\n" +
-"   		<div class='descr'>\n" +
-"   			\n" +
-"   				Универсальный навигатор\n" +
-"				черно-белый дисплей 2.66'\n" +
-"				разрешение 64x100 пикс.\n" +
-"				ПО: Garmin\n" +
-"				водонепроницаемый корпус\n" +
-"				питание от батареек AA\n" +
-"   			\n" +
-"   		</div>\n" +
+"   		<div class='descr'>"+res.getString("description")+"</div>\n" +
 "\n" +
-"   		<div class='prop'>\n" +
-"			Число каналов приемника<b>12</b> <br/> \n" +
-"			\n" +
-"			Теплый старт\n" +
-" 			<b>15 с</b> <br/>\n" +
-"			\n" +
-"			Холодный старт\n" +
-" 			<b>45 с</b> <br/>\n" +
-"			\n" +
-"			Элементы питания  <b>AA</b> <br/>\n" +
-"			\n" +
-"			Время работы <b>24 ч</b> <br/>\n" +
-"			\n" +
-"			Водонепроницаемый корпус\n" +
-"			 <b>есть</b> <br/>\n" +
-"			\n" +
-"			Габариты (ШхВхГ)  <b>53x147x31 мм </b> <br/>\n" +
-"			\n" +
-"			Вес <b> 269 г </b> \n" +
-"   		</div>\n" +
+"   		<div class='prop'>"+res.getString("properties_text")+"</div>\n" +
 "\n" +
 "   		<div class='reviews'>\n" +
 "   			<b>Вася</b> <br/> отлично <br/> \n" +
@@ -144,8 +116,7 @@ public class CardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println(request.getParameter("lang"));
-        processRequest(request, response);
+       processRequest(request, response);
     }
 
    
