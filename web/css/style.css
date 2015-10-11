@@ -1,0 +1,121 @@
+body{
+	width: 960px;
+	height: 100%;	
+	padding: 0px;
+}
+html{
+	padding: 0px;
+	height: 100%;
+}
+h1,h2{
+	margin: 0px;
+	text-align: center;
+}
+.header{
+	margin-top: 0;
+	width:inherit;
+	height: 100px;
+	background-color: #acc;
+}
+.header h1{
+	text-align: center;
+
+}
+.lang_sel{
+	padding: 5px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	width: auto;
+	background-color: #cba;
+	float: right;
+}
+.lang_sel ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;	
+}
+.lang_sel li{
+	display: inline;
+}
+
+.menu{
+	background-color: #abc;
+	width: inherit;	
+	height: 30px;
+	
+}
+.menu ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.menu li{
+	display: inline;
+}
+.content{
+	width: inherit;
+	height: auto;
+	background-color: #abd;
+}
+.lay_horisontal{
+	width: inherit;
+	height: 500px;
+}
+.photo_cont{
+	margin-left: 20px;
+	width: 480px;
+	height: auto;
+	float: left;
+}
+.photo_cont img{
+	width: inherit;
+}
+.lay_vertical{
+	float: left;
+	text-align: center;
+	width: 400px;
+	height: inherit;
+	margin-left:30px;
+
+}
+.price{
+		background-color: #bbc;
+	text-align: center;
+	width: 200px;
+	height: 100px;
+	margin:auto;
+}
+.buy_button{
+	margin:auto;
+	width: 200px;
+	height: 100px;
+	background-color: #f88;
+	margin-top: 30px;
+}
+.info{
+	margin-top: 30px;
+	width: inherit;
+	height:400px;
+	background-color: #eee
+}
+.info ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;	
+}
+.info ul li{
+	display: inline;
+}
+.info ul li .checked{
+	background-color: #fcc;
+}
+
+.descr{
+	background-color: #fce
+}
+.prop{
+	background-color: #ffe;
+}
+.reviews{
+	background-color: #abd
+}
