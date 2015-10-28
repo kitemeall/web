@@ -14,7 +14,6 @@ public class Goods implements Serializable{
     private ArrayList <String> photos;
     
     public Goods(){
-      
     }
     
     public Goods(int id, String name, int price, String info, String photo){

@@ -19,4 +19,8 @@ public class Shop {
         return fullList;
     }
     
+    public static ArrayList<Goods> getAllGoodsList(String lang){
+        return Dao.getGoodsList(lang);
+    }
+    
 }

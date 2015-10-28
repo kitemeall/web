@@ -35,6 +35,14 @@ public class Dao {
         }
         return goods;
     }
+    public static ArrayList<Goods> getGoodsList( String lang){
+        ArrayList<Goods> goods = new ArrayList<Goods>();
+        for(int i = 1; i <= 4; i++){
+            goods.add(new Goods(i * 73,"Garmin gps 12", i * 100,
+                    "Very good Gps!", "img/garmin12.jpg"));
+        }
+        return goods;
+    }
     
     private static ArrayList<Property> getPropertiesById(int id, String lang){
         
