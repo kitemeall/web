@@ -1,6 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<jsp:useBean id="item" class="domain.Goods" scope="request" />
 <!DOCTYPE html>
 <html>
 <meta charset='utf-8'>
@@ -10,17 +11,19 @@
 <body>
     <div class="main_div">
 	<div id="image">
-            <img src="img/garmin12.jpg">
+            <img src="<jsp:getProperty name="item" property="mainPhoto"/>">
 	</div>
         <div id="layout_vertical">
-            <h2><%=request.getParameter("name")%></h2>
+            <h2><jsp:getProperty name="item" property="name"/></h2>
             <div id="description">	
-		<%=request.getParameter("description")%>
+                <jsp:getProperty name="item" property="information"/>           
             </div>
 	</div>
 
 	<div class="layout_vertical_right">
-            <div id="price"><%=request.getParameter("price")%></div>
+            <div id="price">
+                <jsp:getProperty name="item" property="price"/>    
+            </div>
             <div class="buy_button">buy</div>
 	</div>
     </div>

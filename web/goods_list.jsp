@@ -24,13 +24,15 @@
    
     <body>
         
-    
+        <jsp:useBean id="item" class="domain.Goods" scope="request"/> 
     <% for(Goods goods:goodsList) { %> 
-        <jsp:include page="list_item.jsp" >
-            <jsp:param name="name" value="<%= goods.getName()%>" />
-            <jsp:param name="price" value="<%= String.valueOf(goods.getPrice())%>" />
-            <jsp:param name="description" value="<%=goods.getInformation()%>" />
-        </jsp:include>
+        <jsp:setProperty name="item" property="name" value="<%=goods.getName()%>"/>
+        <jsp:setProperty name="item" property="information" value="<%=goods.getInformation()%>"/>
+        <jsp:setProperty name="item" property="price" value="<%=goods.getPrice()%>"/>
+        <jsp:setProperty name="item" property="mainPhoto" value="<%=goods.getMainPhoto()%>"/>
+
+        <jsp:include page="list_item.jsp" />
+            
         
         <br>
     <%}%>     

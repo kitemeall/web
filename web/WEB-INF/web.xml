@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app version="3.0" 
+         xmlns="http://java.sun.com/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <context-param>
-        <param-name>lang</param-name>
+        <param-name>default_lang</param-name>
         <param-value>ru</param-value>
     </context-param>
 
@@ -13,22 +16,54 @@
             <param-value>2</param-value>
         </init-param>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>card</servlet-name>
+        <url-pattern>/card</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>goodsListJsp</servlet-name>
         <jsp-file>/goods_list.jsp</jsp-file>
         
     </servlet>
- 
     <servlet-mapping>
         <servlet-name>goodsListJsp</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>Product</servlet-name>
+        <servlet-class>ui.Product</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>card</servlet-name>
-        <url-pattern>/card</url-pattern>
+        <servlet-name>Product</servlet-name>
+        <url-pattern>/product</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>product_jsp</servlet-name>
+        <jsp-file>/product.jsp</jsp-file>
+        <init-param>
+            <param-name>default_tab</param-name>
+            <param-value>3</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>  
+        <servlet-name>product_jsp</servlet-name>  
+        <url-pattern>/product.jsp</url-pattern>  
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>newjsp</servlet-name>
+        <jsp-file>/newjsp.jsp</jsp-file>
+        
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newjsp</servlet-name>
+        <url-pattern>/newjsp</url-pattern>
+    </servlet-mapping>
+    
+    
+    
     
     <session-config>
         <session-timeout>
