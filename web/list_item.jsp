@@ -1,3 +1,6 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setBundle basename="ui.lang.lang" />
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -10,11 +13,15 @@
 </head>
 <body>
     <div class="main_div">
+       
 	<div id="image">
             <img src="<jsp:getProperty name="item" property="mainPhoto"/>">
 	</div>
         <div id="layout_vertical">
+            <a href="product?id=<jsp:getProperty name="item" property="id"/>">
+            
             <h2><jsp:getProperty name="item" property="name"/></h2>
+            </a>
             <div id="description">	
                 <jsp:getProperty name="item" property="information"/>           
             </div>
@@ -24,7 +31,9 @@
             <div id="price">
                 <jsp:getProperty name="item" property="price"/>    
             </div>
-            <div class="buy_button">buy</div>
+            <div class="buy_button">
+                 <fmt:message key="buy" />
+            </div>
 	</div>
     </div>
 </body>

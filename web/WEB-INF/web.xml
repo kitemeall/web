@@ -22,12 +22,12 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>goodsListJsp</servlet-name>
-        <jsp-file>/goods_list.jsp</jsp-file>
+        <servlet-name>goodsList</servlet-name>
+        <servlet-class>ui.GoodsList</servlet-class>
         
     </servlet>
     <servlet-mapping>
-        <servlet-name>goodsListJsp</servlet-name>
+        <servlet-name>goodsList</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
     
