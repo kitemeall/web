@@ -1,5 +1,6 @@
 package ui;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,10 +18,10 @@ public class Product extends HttpServlet {
         
         String lang = request.getParameter("lang");
         HttpSession session = request.getSession();
-        if(valid(lang)){
+        if(LangStringValidator.valid(lang)){
             session.setAttribute("lang", lang);
         }
-        else if (!valid(lang) && session.getAttribute("lang") == null) {
+        else if (!LangStringValidator.valid(lang) && session.getAttribute("lang") == null) {
                 lang = getServletContext().getInitParameter("default_lang");
                 session.setAttribute("lang", lang);           
         }
@@ -34,11 +35,6 @@ public class Product extends HttpServlet {
         processRequest(request, response);
     }
     
-    private boolean valid(String lang){
-       return ((lang != null) &&
-               (   lang.equals("ru") || 
-                   lang.equals("en") || 
-                   lang.equals("ua"))); 
-    }
+    
 
 }
