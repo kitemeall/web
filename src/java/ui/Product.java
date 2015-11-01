@@ -25,6 +25,7 @@ public class Product extends HttpServlet {
                 lang = getServletContext().getInitParameter("default_lang");
                 session.setAttribute("lang", lang);           
         }
+        domain.Goods newGoods = domain.Shop.getGoodsById(1, "ru");
 
         request.getRequestDispatcher("/product.jsp").forward(request, response);
     }

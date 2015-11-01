@@ -2,6 +2,7 @@ package domain;
 
 import dao.Dao;
 import java.util.ArrayList;
+import java.sql.*;
 
 public class Shop {
     
@@ -20,6 +21,7 @@ public class Shop {
     }
     
     public static ArrayList<Goods> getAllGoodsList(String lang){
+        
         return Dao.getGoodsList(lang);
     }
     
