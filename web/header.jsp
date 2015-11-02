@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope.lang}" />
-<% String lang = (String)session.getAttribute("lang");%>
+<fmt:setLocale value="${requestScope.lang}" />
+<% String lang = (String)request.getAttribute("lang");%>
 <fmt:setBundle basename="ui.lang.lang" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,9 +18,9 @@
 <div class='header'>
 	<div class='lang_sel'>
 		<ul>
-                    <li><a  id = 'ruLang'>Русский</a></li>
-  			<li><a  id = 'enLang'>English</a></li>
-   			<li><a id = 'uaLang'>Українська</a></li>
+                    <li><a href="?lang=ru" id = 'ruLang'>Русский</a></li>
+  			<li><a href="?lang=en"  id = 'enLang'>English</a></li>
+   			<li><a href="?lang=ua" id = 'uaLang'>Українська</a></li>
 	</div>
 	
 	<h1> 
@@ -45,6 +45,6 @@
 
 	</div>
 </div>
-                        <script src="js/headerScript.js"></script>
+                        
 </body>
 </html>

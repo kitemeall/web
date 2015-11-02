@@ -12,34 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class Product extends HttpServlet {
+public class Product extends LangParseServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         
-        String lang = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("lang")) {
-                    lang = cookie.getValue();
-                }
-            }
-        }
-        HttpSession session = request.getSession();
-        if(LangStringValidator.valid(lang)){
-            session.setAttribute("lang", lang);
-        }
-        else if (!LangStringValidator.valid(lang) && session.getAttribute("lang") == null) {
-                lang = getServletContext().getInitParameter("default_lang");
-                session.setAttribute("lang", lang);           
-        }
-        
+        parseLang(request, response);
         
         Integer id = null;
         try{
              id = Integer.parseInt(request.getParameter("id"));
+             request.setAttribute("id", id);
              request.getRequestDispatcher("/product.jsp").forward(request, response);
              
         }catch(Exception e){

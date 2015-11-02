@@ -1,47 +1,48 @@
 package ui;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.apache.tomcat.util.http.Cookies;
 
-public class GoodsList extends HttpServlet {
+public class GoodsList extends LangParseServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String lang = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("lang")) {
-                    lang = cookie.getValue();
-                }
-            }
-        }
-
-        HttpSession session = request.getSession();
-        if (LangStringValidator.valid(lang)) {
-            session.setAttribute("lang", lang);
-        } else if (!LangStringValidator.valid(lang) && session.getAttribute("lang") == null) {
-            lang = getServletContext().getInitParameter("default_lang");
-            session.setAttribute("lang", lang);
-        }
+        parseLang(request, response);
 
         String category = request.getParameter("type");
-        if (category != null) {
-            session.setAttribute("category", category);
-        } else if (session.getAttribute("category") == null) {
-            session.setAttribute("category", "all");
+        Cookie[] cookies = request.getCookies();
+        if (category == null) {
+            if (cookies == null) {
+                setCategory(request, response, "all");
+            } else {
+                int i = 0;
+                for (i = 0; i < cookies.length; i++) {
+                    if (cookies[i].getName().equals("category")) {
+                        request.setAttribute("category",cookies[i].getValue());
+                        break;
+                    }
+                }
+                if (i == cookies.length) {
+                    setCategory(request, response, "all");
+                }
+            }
+        } else {
+            setCategory(request, response, category);
         }
 
         request.getRequestDispatcher("/goods_list.jsp").forward(request, response);
+    }
+
+    private void setCategory(HttpServletRequest request, HttpServletResponse response, String category) {
+        request.setAttribute("category", category);
+        Cookie cookie = new Cookie("category", category);
+        cookie.setMaxAge(Integer.parseInt(getServletContext()
+                .getInitParameter("category_cookie_lifetime")));
+        response.addCookie(cookie);
     }
 
     @Override

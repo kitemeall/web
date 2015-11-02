@@ -5,9 +5,19 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <context-param>
         <param-name>default_lang</param-name>
-        <param-value>ru</param-value>
+        <param-value>ru</param-value>       
     </context-param>
-
+    
+    <context-param>
+        <param-name>category_cookie_lifetime</param-name>
+        <param-value>15</param-value>
+    </context-param>
+    
+    <context-param>    
+        <param-name>lang_cookie_lifetime</param-name>
+        <param-value>10</param-value>   
+    </context-param> 
+    
     <servlet>
         <servlet-name>card</servlet-name>
         <servlet-class>ui.CardServlet</servlet-class>
@@ -69,5 +79,7 @@
         <session-timeout>
             30
         </session-timeout>
+        
+            
     </session-config>
 </web-app>

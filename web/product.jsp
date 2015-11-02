@@ -1,11 +1,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setLocale value="${requestScope.lang}" />
 <fmt:setBundle basename="ui.lang.lang" />
 <%@page contentType="text/html" pageEncoding="UTF-8"
         import="domain.*"%>
 <%
-    Goods goods =  Shop.getGoodsById(Integer.parseInt(request.getParameter("id"))
-            ,(String)session.getAttribute("lang"));
+    Goods goods =  Shop.getGoodsById((Integer)request.getAttribute("id")
+            ,(String)request.getAttribute("lang"));
     if(goods == null){
         response.sendError(HttpServletResponse.SC_NOT_FOUND);
     }
