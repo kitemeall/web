@@ -32,7 +32,7 @@
                     <li><a href='#'>
                         <fmt:message key="enter" />
                         </a></li>
-                    <li><a href='#'>
+                    <li><a href='list'>
                                 <fmt:message key="catalog" />
                         </a></li>
                     <li><a href='#'>

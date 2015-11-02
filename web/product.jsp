@@ -1,7 +1,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}" />
 <fmt:setBundle basename="ui.lang.lang" />
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"
+        import="domain.*"%>
+<%
+    Goods goods =  Shop.getGoodsById(Integer.parseInt(request.getParameter("id"))
+            ,(String)session.getAttribute("lang"));
+    if(goods == null){
+        response.sendError(HttpServletResponse.SC_NOT_FOUND);
+    }
+
+
+%>
 <!DOCTYPE html>
 <html>
 <meta charset='utf-8'>
@@ -17,14 +27,14 @@
          <br>
 
 <div class='content'>
-	<h2>garmin gps 12 cx</h2>
+	<h2><%=goods.getName()%></h2>
 	
 	<div class='lay_horisontal'>
 		<div class='photo_cont'>
-			<img src='img/garmin12.jpg'>
+			<img src='<%=goods.getMainPhoto()%>'>
 		</div>
 		<div class='lay_vertical'>
-			<div class='price'> $500 </div>
+			<div class='price'> $<%=goods.getPrice()%> </div>
 		
 			<div class='buy_button'>
                             <fmt:message key="buy" />
@@ -46,40 +56,27 @@
    		</ul>
    		<div class='descr'>
    			
-   				Универсальный навигатор
-				черно-белый дисплей 2.66'
-				разрешение 64x100 пикс.
-				ПО: Garmin
-				водонепроницаемый корпус
-				питание от батареек AA
+   				<%=goods.getInformation()%>
    			
    		</div>
 
    		<div class='prop'>
-			Число каналов приемника<b>12</b> <br/> 
+                    <% for(Property property:goods.getProperties()) { %> 
+			<%=property.getProperty()%>
+                        
+                        <b><%=property.getValue()%></b> 
+                        <br/> 
 			
-			Теплый старт
- 			<b>15 с</b> <br/>
-			
-			Холодный старт
- 			<b>45 с</b> <br/>
-			
-			Элементы питания  <b>AA</b> <br/>
-			
-			Время работы <b>24 ч</b> <br/>
-			
-			Водонепроницаемый корпус
-			 <b>есть</b> <br/>
-			
-			Габариты (ШхВхГ)  <b>53x147x31 мм </b> <br/>
-			
-			Вес <b> 269 г </b> 
+                    <%}%>
+                        
    		</div>
 
    		<div class='reviews'>
-   			<b>Вася</b> <br/> отлично <br/> 
-   			<b>Петя</b> <br/> еще лучше <br/> 
-   			<b>Гриша</b> <br/> Просто супер <br/> 
+                     <% for(Review review:goods.getReviews()) { %>
+   			<b><%=review.getAuthor()%></b> 
+                        <br/> <%=review.getReview()%><br/> 
+                        
+                      <%}%>
    		</div>
 
 	</div>

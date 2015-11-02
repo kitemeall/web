@@ -36,13 +36,14 @@ public class Dao {
                     null);
 
         } catch (SQLException e) {
-            System.err.println(e);
+           
+            e.printStackTrace();
         } finally {
             if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
 
@@ -50,14 +51,14 @@ public class Dao {
                 try {
                     statement.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
             if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
 
@@ -66,22 +67,116 @@ public class Dao {
     }
 
     public static ArrayList<Goods> getGoodsByCategory(String category, String lang) {
-        ArrayList<Goods> goods = new ArrayList<Goods>();
-        for (int i = 1; i <= 4; i++) {
-            goods.add(new Goods(i * 73, "Garmin gps 12", i * 100,
-                    "Very good Gps!", "img/garmin12.jpg"));
+        ArrayList<Goods> goodsList = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement =null;
+        ResultSet resultSet = null;
+        String query = "SELECT * from goods  left JOIN descriptions ON  descriptions.goods_id=goods.id  and lang=? where categ=?";
+        try {
+            connection = Connector.getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, lang);
+            preparedStatement.setString(2, category);
+
+            resultSet = preparedStatement.executeQuery();
+            
+            goodsList = new ArrayList<Goods>();
+            while(resultSet.next()){ 
+                goodsList.add(new Goods(resultSet.getInt("id"),
+                        resultSet.getString("name"), 
+                        resultSet.getInt("price"),                        
+                        resultSet.getString("description"),
+                        resultSet.getString("photo")
+                        ));           
+            }
+
+
+        } catch (SQLException e) {
+           
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
-        return goods;
+        return goodsList;
     }
 
     public static ArrayList<Goods> getGoodsList(String lang) {
-        ArrayList<Goods> goods = new ArrayList<Goods>();
-        for (int i = 1; i <= 4; i++) {
-            goods.add(new Goods(i * 73, "Garmin gps 12", i * 100,
-                    "Very good Gps!", "img/garmin12.jpg"));
+        ArrayList<Goods> goodsList = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement =null;
+        ResultSet resultSet = null;
+        String query = "SELECT * from goods left JOIN descriptions ON descriptions.goods_id=goods.id and lang=?";
+        try {
+            connection = Connector.getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, lang);
+            resultSet = preparedStatement.executeQuery();
+            
+            goodsList = new ArrayList<Goods>();
+            while(resultSet.next()){ 
+                goodsList.add(new Goods(resultSet.getInt("id"),
+                        resultSet.getString("name"), 
+                        resultSet.getInt("price"),                        
+                        resultSet.getString("description"),
+                        resultSet.getString("photo")
+                        ));           
+            }
+
+
+        } catch (SQLException e) {
+           
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
-        return goods;
+        return goodsList;
     }
+        
+       
 
     private static ArrayList<Property> getPropertiesById(int id, String lang) {
 
@@ -108,13 +203,13 @@ public class Dao {
             }
 
         } catch (SQLException e) {
-            System.err.println(e);
+            e.printStackTrace();
         } finally {
             if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
 
@@ -122,14 +217,14 @@ public class Dao {
                 try {
                     preparedStatement.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
             if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
         }
@@ -158,13 +253,13 @@ public class Dao {
             }
 
         } catch (SQLException e) {
-            System.err.println(e);
+            e.printStackTrace();
         } finally {
             if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
 
@@ -172,14 +267,14 @@ public class Dao {
                 try {
                     statement.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
             if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
 
@@ -194,13 +289,16 @@ public class Dao {
     private static String getDescriptionById(int id, String lang) {
         String description = null;
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        String query = "SELECT * FROM descriptions WHERE goods_id= ? and lang = ?";
+        
         try {
             connection = Connector.getConnection();
-            statement = connection.createStatement();
-            String query = "SELECT * FROM descriptions WHERE goods_id=" + id + "And lang="+lang;
-            resultSet = statement.executeQuery(query);
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, lang);
+            resultSet = preparedStatement.executeQuery();
 
             resultSet.next();
             description = resultSet.getString("description");
@@ -208,28 +306,28 @@ public class Dao {
            
 
         } catch (SQLException e) {
-            System.err.println(e);
+            e.printStackTrace();
         } finally {
             if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
 
-            if (statement != null) {
+            if (preparedStatement != null) {
                 try {
-                    statement.close();
+                    preparedStatement.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
             if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    e.printStackTrace();
                 }
             }
 

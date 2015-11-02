@@ -1,6 +1,7 @@
 package ui;
 
-
+import domain.Goods;
+import domain.Shop;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -25,9 +26,19 @@ public class Product extends HttpServlet {
                 lang = getServletContext().getInitParameter("default_lang");
                 session.setAttribute("lang", lang);           
         }
-        domain.Goods newGoods = domain.Shop.getGoodsById(1, "ru");
-
-        request.getRequestDispatcher("/product.jsp").forward(request, response);
+        
+        
+        Integer id = null;
+        try{
+             id = Integer.parseInt(request.getParameter("id"));
+             request.getRequestDispatcher("/product.jsp").forward(request, response);
+             
+        }catch(Exception e){
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+        
+        
+        
     }
 
     @Override

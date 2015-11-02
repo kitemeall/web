@@ -6,12 +6,10 @@
         import="java.util.ArrayList, domain.Shop, domain.Goods"%>
 
 <%
-    ArrayList<Goods> goodsList;
-    String categ = request.getParameter("cat");
-    String lang = request.getParameter("lang");
-    if(lang == null)
-       lang = getServletContext().getInitParameter("lang");
-    if(categ == null)
+    ArrayList<Goods> goodsList = null;
+    String categ = (String)session.getAttribute("category");
+    String lang = (String)session.getAttribute("lang");
+    if(categ.equals("all"))
         goodsList = Shop.getAllGoodsList(lang);
     else
         goodsList = Shop.getGoodsFromCategories(lang, categ);
