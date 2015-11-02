@@ -29,7 +29,7 @@
 
 	<div class="layout_vertical_right">
             <div id="price">
-                <jsp:getProperty name="item" property="price"/>    
+                $<jsp:getProperty name="item" property="price"/>    
             </div>
             <div class="buy_button">
                  <fmt:message key="buy" />

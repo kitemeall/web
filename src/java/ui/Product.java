@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,15 @@ public class Product extends HttpServlet {
             throws ServletException, IOException {
 
         
-        String lang = request.getParameter("lang");
+        String lang = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("lang")) {
+                    lang = cookie.getValue();
+                }
+            }
+        }
         HttpSession session = request.getSession();
         if(LangStringValidator.valid(lang)){
             session.setAttribute("lang", lang);
