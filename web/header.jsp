@@ -18,9 +18,9 @@
 <div class='header'>
 	<div class='lang_sel'>
 		<ul>
-                    <li><a href="?lang=ru" id = 'ruLang'>Русский</a></li>
-  			<li><a href="?lang=en"  id = 'enLang'>English</a></li>
-   			<li><a href="?lang=ua" id = 'uaLang'>Українська</a></li>
+                    <li><a  class = 'lang_link' id ='ru'>Русский</a></li>
+  			<li><a class = 'lang_link' id ='en'>English</a></li>
+   			<li><a class = 'lang_link' id ='ua'>Українська</a></li>
 	</div>
 	
 	<h1> 
@@ -46,5 +46,6 @@
 	</div>
 </div>
                         
+<script src="js/header.js"> </script>                       
 </body>
 </html>
