@@ -11,6 +11,60 @@ public class Dao {
 
     private Dao() {
     }
+    
+    public static Goods getGoodsListItemById(int id, String lang) {
+        Goods goods = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement =null;
+        ResultSet resultSet = null;
+        String query = "SELECT *  from goods left JOIN descriptions ON descriptions.goods_id=goods.id and lang=? where id=?;";
+        try {
+            connection = Connector.getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, lang);
+            preparedStatement.setInt(2, id);
+
+            resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            goods = new Goods(resultSet.getInt("id"),
+                        resultSet.getString("name"), 
+                        resultSet.getInt("price"),                        
+                        resultSet.getString("description"),
+                        resultSet.getString("photo")
+                        );           
+            
+
+
+        } catch (SQLException e) {
+           
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return goods;
+    }
 
     public static Goods getGoodsById(int id, String lang) {
         Goods goods = null;
