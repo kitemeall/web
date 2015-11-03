@@ -72,3 +72,7 @@ a {
 .menu li:last-child{
 	border-right: none;
 }
+.menu .active_tab a{
+    font-weight: bold;
+    color: #fff;
+}

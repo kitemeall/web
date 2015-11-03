@@ -29,16 +29,32 @@
 
 	<div class='menu'>
 		<ul>
-                    <li><a href='#'>
+                    <li
+                        <c:if test="${'enter'eq param.activeTab}">
+                            class='active_tab'
+                        </c:if>
+                        ><a href='#'>
                         <fmt:message key="enter" />
                         </a></li>
-                    <li><a href='list'>
+                    <li
+                        <c:if test="${'catalog'eq param.activeTab}">
+                            class='active_tab'
+                        </c:if>
+                             ><a href='list'>
                                 <fmt:message key="catalog" />
                         </a></li>
-                    <li><a href='#'>
+                    <li
+                        <c:if test="${'cart'eq param.activeTab}">
+                            class='active_tab'
+                        </c:if>
+                            ><a href='#'>
                             <fmt:message key="cart" />
                         </a></li>
-                    <li><a href='#'>
+                    <li
+                        <c:if test="${'history'eq param.activeTab}">
+                            class='active_tab'
+                        </c:if>
+                            ><a href='#'>
                             <fmt:message key="history" />
                         </a></li>
    		</ul>

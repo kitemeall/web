@@ -48,5 +48,15 @@ public class Order {
         }
         orderItemList.add(new OrderItem(id));
     }
+    
+    public void setLang(String lang){
+        for(OrderItem item :orderItemList){
+            item.setLang(lang);
+        }
+    }
+    
+    public boolean isEmpty(){
+        return orderItemList.isEmpty();
+    }
            
 }

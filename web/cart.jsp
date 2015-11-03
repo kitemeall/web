@@ -1,40 +1,72 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setLocale value="${requestScope.lang}" />
 <fmt:setBundle basename="ui.lang.lang" />
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"
+        import="java.util.ArrayList, domain.Order, domain.OrderItem"%>
 
-<jsp:useBean id="item" class="domain.Goods" scope="request" />
+
 <!DOCTYPE html>
 <html>
-<meta charset='utf-8'>
-<head>
-	<link rel='stylesheet' type='text/css' href='css/list_styles.css'>
-</head>
-<body>
-    <div class="main_div">
-       
-	<div id="image">
-            <img src="<jsp:getProperty name="item" property="mainPhoto"/>">
-	</div>
-        <div id="layout_vertical">
-            <a href="product?id=<jsp:getProperty name="item" property="id"/>">
-            
-            <h2><jsp:getProperty name="item" property="name"/></h2>
-            </a>
-            <div id="description">	
-                <jsp:getProperty name="item" property="information"/>           
-            </div>
-	</div>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel='stylesheet' type='text/css' href='css/cart_item.css'>
+    </head>
+    <c:set var="order" value="${sessionScope.order}"/>
+    <body>
+        <jsp:include page="header.jsp" >
+            <jsp:param name="activeTab" value="cart" />
+        </jsp:include>
+        <br>
+        <c:choose>
+            <c:when test="${order.isEmpty()}">
+                empty
+            </c:when>
 
-	<div class="layout_vertical_right">
-            <div id="price">
-                $<jsp:getProperty name="item" property="price"/>    
-            </div>
-            <div class="buy_button">
-                 <fmt:message key="buy" />
-            </div>
-	</div>
-    </div>
-</body>
+
+
+            <c:otherwise>   
+                <c:forEach var="item" items="${order.getItemList()}">
+
+                    <div class="main_div">
+                        <div id="image">
+                            <img src="<c:out value="${item.getPicture()}"/>"/>
+                        </div>
+                        <div id="layout_vertical">
+
+
+                            <h2> <c:out value="${item.getName()}"/> </h2>
+
+                            <div id="description">	
+                                <c:out value="${item.getDescription()}"/>           
+                            </div>
+                        </div>
+
+                        <div class="layout_vertical_right">
+                            <div id="price"><c:out value="${item.getPrice()}"/> </div>
+                            <div class="amount">
+                                <div class="amount_button" type="add" 
+                                     id="<c:out value="${item.getId()}"/>">
+                                    +
+                                </div>
+                                <div class="amount_value"><c:out value="${item.getAmount()}"/></div>
+                                <div class="amount_button" type="remove"
+                                     id="<c:out value="${item.getId()}"/>">
+                                    -
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </c:forEach>  
+            </c:otherwise>         
+        </c:choose>         
+
+        <br>
+
+        <script src="js/list_select.js"></script>
+    </body>
 </html>

@@ -1,14 +1,16 @@
 package domain;
 
 import dao.Dao;
+import java.io.Serializable;
 
 
-public class OrderItem {
+public class OrderItem  {
     
     public OrderItem(int id){
         goodsId = id;
         amount = 1;
     }
+    
     
     private Goods goods;
     private int amount;
@@ -42,6 +44,10 @@ public class OrderItem {
     }
     public int getTotalPrice(){
         return (goods.getPrice() * amount);
+    }
+    
+    public int getId(){
+        return goodsId;
     }
     
 }
