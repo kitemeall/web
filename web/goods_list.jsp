@@ -56,5 +56,6 @@
         <br>
     <%}%>     
     <script src="js/list_select.js"></script>
+    <script src="js/list_item.js"></script>
     </body>
 </html>

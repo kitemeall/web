@@ -22,6 +22,7 @@ public class AddItemToOrder extends HttpServlet {
                 Order order = (Order)request.getSession().getAttribute("order");
                 if(order == null){
                     order = new Order();
+                    request.getSession().setAttribute("order", order);
                 }
                 order.addItem(id);
                 response.sendError(200);

@@ -11,8 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel='stylesheet' type='text/css' href='css/cart_item.css'>
+        <title>Cart</title>
+        <link rel='stylesheet' type='text/css' href='css/cart.css'>
     </head>
     <c:set var="order" value="${sessionScope.order}"/>
     <body>
@@ -48,7 +48,7 @@
                             <div id="price"><c:out value="${item.getPrice()}"/> </div>
                             <div class="amount">
                                 <div class="amount_button" type="add" 
-                                     id="<c:out value="${item.getId()}"/>">
+                                     goods_id="<c:out value="${item.getId()}"/>">
                                     +
                                 </div>
                                 <div class="amount_value"><c:out value="${item.getAmount()}"/></div>
@@ -59,14 +59,13 @@
                             </div>
                         </div>
                     </div>
-
+                    <br>                
 
                 </c:forEach>  
             </c:otherwise>         
         </c:choose>         
 
         <br>
-
-        <script src="js/list_select.js"></script>
+     
     </body>
 </html>

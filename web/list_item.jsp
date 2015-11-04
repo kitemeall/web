@@ -1,13 +1,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setLocale value="${requestScope.lang}" />
 <fmt:setBundle basename="ui.lang.lang" />
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <jsp:useBean id="item" class="domain.Goods" scope="request" />
-<!DOCTYPE html>
-<html>
-<meta charset='utf-8'>
+
 <head>
 	<link rel='stylesheet' type='text/css' href='css/list_styles.css'>
 </head>
@@ -31,10 +29,11 @@
             <div id="price">
                 $<jsp:getProperty name="item" property="price"/>    
             </div>
-            <div class="buy_button">
+            <div class="buy_button" 
+                 product_id="<jsp:getProperty name="item" property="id"/>">
                  <fmt:message key="buy" />
             </div>
 	</div>
     </div>
+            
 </body>
-</html>

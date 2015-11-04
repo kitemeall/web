@@ -47,7 +47,7 @@
                         <c:if test="${'cart'eq param.activeTab}">
                             class='active_tab'
                         </c:if>
-                            ><a href='#'>
+                            ><a href='cart'>
                             <fmt:message key="cart" />
                         </a></li>
                     <li

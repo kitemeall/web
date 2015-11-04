@@ -84,6 +84,7 @@ a {
 	font-size: 20px;
 	background-color:#33dd00;
 	border-radius: 10px;
+        cursor: pointer;
 }
 .amount_value{
 	width:50px;
