@@ -31,9 +31,9 @@ public class AddItemToOrder extends HttpServlet {
             }
             
         }else if(request.getParameter("remove") !=null){
-            int id = 0;
+           
             try{
-                id = Integer.parseInt(request.getParameter("remove"));
+                int id = Integer.parseInt(request.getParameter("remove"));
                 Order order = (Order)request.getSession().getAttribute("order");
                 if(order != null){
                     order.remoreItem(id);

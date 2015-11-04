@@ -47,21 +47,22 @@
                         <div class="layout_vertical_right">
                             <div id="price"><c:out value="${item.getPrice()}"/> </div>
                             <div class="amount">
-                                <div class="amount_button" type="add" 
-                                     goods_id="<c:out value="${item.getId()}"/>">
+                                <div class="amount_button" action="add" 
+                                     product_id="<c:out value="${item.getId()}"/>">
                                     +
                                 </div>
                                 <div class="amount_value"><c:out value="${item.getAmount()}"/></div>
-                                <div class="amount_button" type="remove"
-                                     id="<c:out value="${item.getId()}"/>">
+                                <div class="amount_button" action="remove"
+                                     product_id="<c:out value="${item.getId()}"/>">
                                     -
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>                
-
+                  
                 </c:forEach>  
+                    <script src="js/cart.js"></script>
             </c:otherwise>         
         </c:choose>         
 
