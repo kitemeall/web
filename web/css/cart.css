@@ -95,3 +95,27 @@ a {
 	border:dashed 1px;
 	border-radius: 5px;
 }
+.total{
+	width: inherit;
+	height: 30px;
+	font-size: 20px;
+	border-bottom: dashed 2px;
+	line-height: 30px;
+}
+.total_phrase{
+	display: inline-block;
+	margin-left: 20px;
+}
+.total_price{
+	float: right;
+	display: inline-block;
+	margin-right: 20px;
+}
+.empty_message{
+    display: inline-block;
+    margin-left: 20px;
+}
+.empty_message a{
+    text-decoration: underline;
+}
+

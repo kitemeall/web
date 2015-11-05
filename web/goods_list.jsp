@@ -56,6 +56,6 @@
         <br>
     <%}%>     
     <script src="js/list_select.js"></script>
-    <script src="js/list_item.js"></script>
+    <script src="js/buy_buttons.js"></script>
     </body>
 </html>

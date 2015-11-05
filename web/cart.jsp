@@ -22,7 +22,9 @@
         <br>
         <c:choose>
             <c:when test="${order.isEmpty()}">
-                empty
+                <div class="empty_message"> 
+                    <fmt:message key="empty_cart_message" />
+                </div>
             </c:when>
 
 
@@ -45,28 +47,36 @@
                         </div>
 
                         <div class="layout_vertical_right">
-                            <div id="price"><c:out value="${item.getPrice()}"/> </div>
+                            <div id="price">$<c:out value="${item.getPrice()}"/> </div>
                             <div class="amount">
-                                <div class="amount_button" action="add" 
-                                     product_id="<c:out value="${item.getId()}"/>">
-                                    +
-                                </div>
-                                <div class="amount_value"><c:out value="${item.getAmount()}"/></div>
-                                <div class="amount_button" action="remove"
+                                <div class="amount_button" action="remove" 
                                      product_id="<c:out value="${item.getId()}"/>">
                                     -
+                                </div>
+                                <div class="amount_value"><c:out value="${item.getAmount()}"/></div>
+                                <div class="amount_button" action="add"
+                                     product_id="<c:out value="${item.getId()}"/>">
+                                    +
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>                
-                  
-                </c:forEach>  
-                    <script src="js/cart.js"></script>
+
+                </c:forEach>
+                <div class="total">
+                    <div class="total_phrase">
+                        <fmt:message key="total_cost" /> 
+                    </div>
+                    <div class="total_price">
+                        $<c:out value="${order.getTotalPrice()}"/>
+                    </div>
+                </div>
+                <script src="js/cart.js"></script>
             </c:otherwise>         
         </c:choose>         
 
         <br>
-     
+
     </body>
 </html>
