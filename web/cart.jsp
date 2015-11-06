@@ -65,16 +65,26 @@
 
                 </c:forEach>
                 <div class="total">
-                    <div class="total_phrase">
-                        <fmt:message key="total_cost" /> 
-                    </div>
                     <div class="total_price">
                         $<c:out value="${order.getTotalPrice()}"/>
                     </div>
+                    <div class="total_phrase">
+                        <fmt:message key="total_cost" /> 
+                    </div>
+
                 </div>
+                    <div class="make_order_button">
+                        <a href="order">
+                            Оформить заказ
+                        </a>
+                    </div>
+
                 <script src="js/cart.js"></script>
+
             </c:otherwise>         
         </c:choose>         
+
+
 
         <br>
 

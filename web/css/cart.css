@@ -98,13 +98,13 @@ a {
 .total{
 	width: inherit;
 	height: 30px;
-	font-size: 20px;
-	border-bottom: dashed 2px;
+	font-size: 18px;
 	line-height: 30px;
 }
 .total_phrase{
 	display: inline-block;
-	margin-left: 20px;
+	margin-right: 40px;
+        float: right;
 }
 .total_price{
 	float: right;
@@ -118,4 +118,17 @@ a {
 .empty_message a{
     text-decoration: underline;
 }
-
+.make_order_button {
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: #f88;
+    border-radius: 10px;
+    height: 40px;
+    float: right;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}

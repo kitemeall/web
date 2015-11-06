@@ -7,14 +7,15 @@
 
 <%
     ArrayList<Goods> goodsList = null;
-    String categ = (String)request.getAttribute("category");
-    String lang = (String)request.getAttribute("lang");
-    if(categ.equals("all"))
+    String categ = (String) request.getAttribute("category");
+    String lang = (String) request.getAttribute("lang");
+    if (categ.equals("all")) {
         goodsList = Shop.getAllGoodsList(lang);
-    else
+    } else {
         goodsList = Shop.getGoodsFromCategories(lang, categ);
-    
-    %>    
+    }
+
+%>    
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,40 +23,50 @@
         <title>JSP Page</title>
         <link rel='stylesheet' type='text/css' href='css/list.css'>
     </head>
-   
+
     <body>
-         <jsp:include page="header.jsp" />
-         <br>
-         <%String category = categ;%>
-         <select id="type_select">
-             <option value="all"<%if(category.equals("all")) out.print("selected"); %>>
-                 <fmt:message key="all" />
-             </option>
-            <option value="tourist"<%if(category.equals("tourist")) out.print("selected"); %>>
+        <jsp:include page="header.jsp" >
+            <jsp:param name="activeTab" value="catalog" />
+        </jsp:include>
+        <br>
+        <%String category = categ;%>
+        <select id="type_select">
+            <option value="all"<%if (category.equals("all")) {
+                out.print("selected");
+            } %>>
+                <fmt:message key="all" />
+            </option>
+            <option value="tourist"<%if (category.equals("tourist")) {
+                out.print("selected");
+            } %>>
                 <fmt:message key="tourist" /> 
             </option>
-             <option value="auto"<%if(category.equals("auto")) out.print("selected"); %>>
-                 <fmt:message key="auto" />
-             </option>
-             <option value="water"<%if(category.equals("water")) out.print("selected"); %>>
-                 <fmt:message key="water" /> 
-             </option>
-         </select>
-         <br>
-         <br> 
+            <option value="auto"<%if (category.equals("auto")) {
+                out.print("selected");
+            } %>>
+                <fmt:message key="auto" />
+            </option>
+            <option value="water"<%if (category.equals("water")) {
+                out.print("selected");
+            } %>>
+                <fmt:message key="water" /> 
+            </option>
+        </select>
+        <br>
+        <br> 
         <jsp:useBean id="item" class="domain.Goods" scope="request"/> 
-    <% for(Goods goods:goodsList) { %> 
+        <% for (Goods goods : goodsList) {%> 
         <jsp:setProperty name="item" property="name" value="<%=goods.getName()%>"/>
         <jsp:setProperty name="item" property="information" value="<%=goods.getInformation()%>"/>
         <jsp:setProperty name="item" property="price" value="<%=goods.getPrice()%>"/>
         <jsp:setProperty name="item" property="mainPhoto" value="<%=goods.getMainPhoto()%>"/>
         <jsp:setProperty name="item" property="id" value="<%=goods.getId()%>"/>
         <jsp:include page="list_item.jsp" />
-            
-        
+
+
         <br>
-    <%}%>     
-    <script src="js/list_select.js"></script>
-    <script src="js/buy_buttons.js"></script>
+        <%}%>     
+        <script src="js/list_select.js"></script>
+        <script src="js/buy_buttons.js"></script>
     </body>
 </html>

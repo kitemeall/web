@@ -30,10 +30,10 @@
 	<div class='menu'>
 		<ul>
                     <li
-                        <c:if test="${'enter'eq param.activeTab}">
+                        <c:if test="${'login'eq param.activeTab}">
                             class='active_tab'
                         </c:if>
-                        ><a href='#'>
+                        ><a href='login'>
                         <fmt:message key="enter" />
                         </a></li>
                     <li
