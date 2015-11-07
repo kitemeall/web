@@ -17,20 +17,26 @@
     <jsp:param name="activeTab" value="login" />
 </jsp:include>
 <html>
-    <body bgcolor="#ffffff">
+    <body >
         <form method="POST" action="j_security_check">
             <center>
                 <table border="0">
                     <tr>
-                        <td>Login</td>
+                        <td>
+                            <fmt:message key="login" />
+
+                        </td>
                         <td><input type="text" name="j_username"></td>
                     </tr>
                     <tr>
-                        <td>Password</td>
+                        <td>
+                            <fmt:message key="password" />
+
+                        </td>
                         <td><input type="password" name="j_password"></td>
                     </tr>
                 </table>
-                <input type="submit" value="Login!">
+                <input type="submit" value="<fmt:message key="enter" />">
             </center>
         </form>
     </body>

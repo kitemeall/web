@@ -69,6 +69,9 @@ a {
 	display: inline;
 	border-right: solid;
 }
+.logout{
+    cursor: pointer;
+}
 .menu li:last-child{
 	border-right: none;
 }

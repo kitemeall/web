@@ -9,6 +9,8 @@
                 SecuredBookSite
             </web-resource-name>
             <url-pattern>/order</url-pattern>
+            <url-pattern>/profile</url-pattern> 
+
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
@@ -45,6 +47,10 @@
         <param-value>10</param-value>   
     </context-param> 
     
+    <context-param>
+            <param-name>default_tab</param-name>
+            <param-value>1</param-value>
+    </context-param>
     
     <welcome-file-list>
         <welcome-file>list</welcome-file>
@@ -65,10 +71,6 @@
     <servlet>
         <servlet-name>card</servlet-name>
         <servlet-class>ui.CardServlet</servlet-class>
-        <init-param>
-            <param-name>default_tab</param-name>
-            <param-value>2</param-value>
-        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>card</servlet-name>
@@ -106,6 +108,24 @@
         <url-pattern>/product.jsp</url-pattern>  
     </servlet-mapping>
     
+    
+    
+    
+    
+    <servlet>
+        <servlet-name>profile</servlet-name>
+        <servlet-class>ui.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>  
+        <servlet-name>profile</servlet-name>  
+        <url-pattern>/profile</url-pattern>  
+    </servlet-mapping>
+    
+    
+    
+    
+    
+    
     <servlet>
         <servlet-name>newjsp</servlet-name>
         <jsp-file>/newjsp.jsp</jsp-file>
@@ -121,9 +141,7 @@
     
     <session-config>
         <session-timeout>
-           5
-        </session-timeout>
-        
-            
+            5
+        </session-timeout>           
     </session-config>
 </web-app>

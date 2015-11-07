@@ -81,7 +81,7 @@
 
             </div>
         </div>
-    <service_inf value = '<%=getInitParameter("default_tab")%>'/>
+    <service_inf value = '<%=getServletContext().getInitParameter("default_tab")%>'/>
     <script src="js/buy_buttons.js"></script>
     <script type='text/javascript' src='js/script.js'></script> 
 </body>
