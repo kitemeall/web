@@ -14,7 +14,7 @@
     <link rel='stylesheet' type='text/css' href='css/cart.css'>
 </head>
 <jsp:include page="header.jsp" >
-    <jsp:param name="activeTab" value="login" />
+    <jsp:param name="activeTab" value="profile" />
 </jsp:include>
 <html>
     <body >

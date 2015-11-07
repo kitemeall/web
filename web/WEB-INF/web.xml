@@ -6,7 +6,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>
-                SecuredBookSite
+                resource
             </web-resource-name>
             <url-pattern>/order</url-pattern>
             <url-pattern>/profile</url-pattern> 
