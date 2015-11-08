@@ -10,16 +10,23 @@
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Cart</title>
-    <link rel='stylesheet' type='text/css' href='css/cart.css'>
+    <title>Login</title>
+    <link rel='stylesheet' type='text/css' href='css/login.css'>
+
 </head>
 <jsp:include page="header.jsp" >
     <jsp:param name="activeTab" value="profile" />
 </jsp:include>
 <html>
     <body >
+
         <form method="POST" action="j_security_check">
             <center>
+                <c:if test='${not empty param["Retry"]}'>
+                    <div class="error">
+                        <fmt:message key="error_msg" />
+                    </div>
+                </c:if>
                 <table border="0">
                     <tr>
                         <td>

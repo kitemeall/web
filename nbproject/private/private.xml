@@ -5,6 +5,8 @@
         <group>
             <file>file:/home/ri/workspace/NetBeansProjects/Shop/web/WEB-INF/web.xml</file>
             <file>file:/home/ri/workspace/NetBeansProjects/Shop/web/login.jsp</file>
+            <file>file:/home/ri/workspace/NetBeansProjects/Shop/web/profile.jsp</file>
+            <file>file:/home/ri/workspace/NetBeansProjects/Shop/web/header.jsp</file>
         </group>
     </open-files>
 </project-private>
