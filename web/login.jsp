@@ -4,7 +4,7 @@
 <fmt:setBundle basename="ui.lang.lang" />
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-        import="java.util.ArrayList, domain.Order, domain.OrderItem"%>
+        import="java.util.ArrayList"%>
 
 
 <!DOCTYPE html>

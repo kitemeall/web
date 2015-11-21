@@ -1,7 +1,8 @@
 package ui;
 
 import java.io.IOException;
-import domain.Order;
+import domain.Cart;
+import domain.Shop;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,11 +17,16 @@ public class MakeOrder extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         request.setCharacterEncoding("UTF-8");
         
-        boolean p = Boolean.valueOf(request.getParameter("delivery"));
+        String userName = request.getUserPrincipal().getName();
+        boolean delivery = Boolean.parseBoolean(request.getParameter("delivery"));
+        String address = request.getParameter("address");
+        Cart cart = (Cart)request.getSession().getAttribute("cart");
+        
+        Shop.makeOrder(userName, cart, delivery, address);
                 
-        System.out.println(p);
        
 
     }

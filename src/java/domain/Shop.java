@@ -26,9 +26,9 @@ public class Shop {
         return Dao.getGoodsList(lang);
     }
     
-    public static void makeOrder(@NotNull String name, @NotNull Order order, 
+    public static void makeOrder(@NotNull String name, @NotNull Cart cart, 
             boolean delivery, @NotNull String address){
-        order.setNowDate();
+        DaoHibernate.saveOrder(new Order(cart, name, delivery, address));
         
     }
     

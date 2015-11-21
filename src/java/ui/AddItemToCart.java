@@ -1,7 +1,7 @@
 package ui;
 
 import java.io.IOException;
-import domain.Order;
+import domain.Cart;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,55 +9,48 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet( name="AddItemToOrder", urlPatterns = {"/addItem"})
-public class AddItemToOrder extends HttpServlet {
+@WebServlet(name = "AddItemToCart", urlPatterns = {"/addItem"})
+public class AddItemToCart extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getParameter("add") != null){
+        if (request.getParameter("add") != null) {
             int id = 0;
-            try{
+            try {
                 id = Integer.parseInt(request.getParameter("add"));
-                Order order = (Order)request.getSession().getAttribute("order");
-                if(order == null){
-                    order = new Order();
-                    request.getSession().setAttribute("order", order);
+                Cart cart = (Cart) request.getSession().getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart();
+                    request.getSession().setAttribute("cart", cart);
                 }
-                order.addItem(id);
-                response.sendError(200);
-            }catch(NumberFormatException e){
+                cart.addItem(id);
+                response.setStatus(response.SC_OK);
+            } catch (NumberFormatException e) {
                 response.sendError(422);
             }
-            
-        }else if(request.getParameter("remove") !=null){
-           
-            try{
+
+        } else if (request.getParameter("remove") != null) {
+
+            try {
                 int id = Integer.parseInt(request.getParameter("remove"));
-                Order order = (Order)request.getSession().getAttribute("order");
-                if(order != null){
-                    order.remoreItem(id);
-                    response.sendError(200);
+                Cart cart = (Cart) request.getSession().getAttribute("cart");
+                if (cart != null) {
+                    cart.remoreItem(id);
+                    response.setStatus(response.SC_OK);
                 }
-                
-            }catch(NumberFormatException e){
+
+            } catch (NumberFormatException e) {
                 response.sendError(422);
             }
-        }else{
+        } else {
             response.sendError(400);
         }
     }
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    
-    
-
-   
-    
 }

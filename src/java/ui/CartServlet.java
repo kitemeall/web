@@ -16,10 +16,10 @@ public class CartServlet extends LangParseServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         parseLang(request, response);
-        if(request.getSession().getAttribute("order") == null){
-            request.getSession().setAttribute("order", new Order());
+        if(request.getSession().getAttribute("cart") == null){
+            request.getSession().setAttribute("cart", new Cart());
         }
-        Order order = (Order)request.getSession().getAttribute("order");
+        Cart order = (Cart)request.getSession().getAttribute("cart");
         order.setLang((String)request.getAttribute("lang"));
         request.getRequestDispatcher("/cart.jsp").forward(request, response);
     }

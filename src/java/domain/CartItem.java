@@ -1,12 +1,11 @@
 package domain;
 
 import dao.Dao;
-import java.io.Serializable;
 
 
-public class OrderItem  {
+public class CartItem  {
     
-    public OrderItem(int id){
+    public CartItem(int id){
         goodsId = id;
         amount = 1;
     }

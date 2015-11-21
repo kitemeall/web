@@ -4,7 +4,7 @@
 <fmt:setBundle basename="ui.lang.lang" />
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-        import="java.util.ArrayList, domain.Order, domain.OrderItem"%>
+        import="java.util.ArrayList, domain.Cart, domain.CartItem"%>
 
 
 <!DOCTYPE html>
@@ -14,14 +14,14 @@
         <title>Cart</title>
         <link rel='stylesheet' type='text/css' href='css/cart.css'>
     </head>
-    <c:set var="order" value="${sessionScope.order}"/>
+    <c:set var="cart" value="${sessionScope.cart}"/>
     <body>
         <jsp:include page="header.jsp" >
             <jsp:param name="activeTab" value="cart" />
         </jsp:include>
         <br>
         <c:choose>
-            <c:when test="${order.isEmpty()}">
+            <c:when test="${cart.isEmpty()}">
                 <div class="empty_message"> 
                     <fmt:message key="empty_cart_message" />
                 </div>
@@ -30,7 +30,7 @@
 
 
             <c:otherwise>   
-                <c:forEach var="item" items="${order.getItemList()}">
+                <c:forEach var="item" items="${cart.getItemList()}">
 
                     <div class="main_div">
                         <div id="image">
@@ -66,7 +66,7 @@
                 </c:forEach>
                 <div class="total">
                     <div class="total_price">
-                        $<c:out value="${order.getTotalPrice()}"/>
+                        $<c:out value="${cart.getTotalPrice()}"/>
                     </div>
                     <div class="total_phrase">
                         <fmt:message key="total_cost" /> 
