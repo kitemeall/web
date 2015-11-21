@@ -1,8 +1,9 @@
 package domain;
 
+import javax.validation.constraints.NotNull;
 import dao.Dao;
+import dao.DaoHibernate;
 import java.util.ArrayList;
-import java.sql.*;
 
 public class Shop {
     
@@ -24,5 +25,12 @@ public class Shop {
         
         return Dao.getGoodsList(lang);
     }
+    
+    public static void makeOrder(@NotNull String name, @NotNull Order order, 
+            boolean delivery, @NotNull String address){
+        order.setNowDate();
+        
+    }
+    
     
 }

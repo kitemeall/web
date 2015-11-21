@@ -1,9 +1,11 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Order {
-
+    
+    private Date date;
     private ArrayList<OrderItem> orderItemList;
 
     public ArrayList<OrderItem> getItemList() {
@@ -63,6 +65,10 @@ public class Order {
 
     public boolean isEmpty() {
         return orderItemList.isEmpty();
+    }
+    
+    public void setNowDate(){
+        date = new Date();
     }
 
 }

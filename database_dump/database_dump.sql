@@ -26,6 +26,7 @@ CREATE TABLE `descriptions` (
   `goods_id` int(11) NOT NULL,
   `lang` varchar(2) NOT NULL,
   `description` text CHARACTER SET utf8,
+  PRIMARY KEY (`goods_id`,`lang`),
   KEY `descriptions_goods_id_idx` (`goods_id`),
   KEY `descriptions_lang_idx` (`lang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -37,7 +38,7 @@ CREATE TABLE `descriptions` (
 
 LOCK TABLES `descriptions` WRITE;
 /*!40000 ALTER TABLE `descriptions` DISABLE KEYS */;
-INSERT INTO `descriptions` VALUES (1,'ru','универсальный навигатор\nчерно-белый дисплей 2.66\"\nразрешение 64x100 пикс.\nПО: Garmin\nводонепроницаемый корпус\nпитание от батареек AA\n'),(1,'en','universal navigator\nblack and white display 2.66 \"\nresolution 64x100 pixels.\nSoftware: Garmin\nwaterproof housing\nPowered by AA batteries\n'),(1,'ua','універсальний навігатор\nчорно-білий дисплей 2.66 \"\nдозвіл 64x100 пікс.\nПО: Garmin\nводонепроникний корпус\nживлення від батарейок AA\n');
+INSERT INTO `descriptions` VALUES (1,'en','universal navigator\nblack and white display 2.66 \"\nresolution 64x100 pixels.\nSoftware: Garmin\nwaterproof housing\nPowered by AA batteries\n'),(1,'ru','универсальный навигатор\nчерно-белый дисплей 2.66\"\nразрешение 64x100 пикс.\nПО: Garmin\nводонепроницаемый корпус\nпитание от батареек AA\n'),(1,'ua','універсальний навігатор\nчорно-білий дисплей 2.66 \"\nдозвіл 64x100 пікс.\nПО: Garmin\nводонепроникний корпус\nживлення від батарейок AA\n'),(2,'en','Navigator \"premium\" class with a screen 6.0 \"built-in DVR and function of warning the driver about the speed limits, radar on the road, the camera control strips of public transport.'),(2,'ru','Навигатор «премиум» класса с экраном 6.0”, встроенным видеорегистратором и функцией предупреждения водителя о скоростных ограничениях, радарах на дороге, камерах контроля полосы общественного транспорта.'),(2,'ua','Навігатор «преміум» класу з екраном 6.0 \", вбудованим відеореєстратором і функцією попередження водія про швидкісні обмеження, радарах на дорозі, камерах контролю смуги громадського транспорту.');
 /*!40000 ALTER TABLE `descriptions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +66,7 @@ CREATE TABLE `goods` (
 
 LOCK TABLES `goods` WRITE;
 /*!40000 ALTER TABLE `goods` DISABLE KEYS */;
-INSERT INTO `goods` VALUES (1,'Garmin 12',500,'img/garmin12.jpg','tourist');
+INSERT INTO `goods` VALUES (1,'Garmin 12',500,'img/garmin12.jpg','tourist'),(2,'Garmin nuviCam',400,'img/GarminnuviCam.jpg','auto');
 /*!40000 ALTER TABLE `goods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,6 +82,7 @@ CREATE TABLE `properties` (
   `value` char(200) CHARACTER SET utf8 NOT NULL,
   `goods_id` int(11) NOT NULL,
   `lang` varchar(2) NOT NULL,
+  PRIMARY KEY (`property`,`goods_id`,`lang`),
   KEY `properties_goods_id_idx` (`goods_id`),
   KEY `properties_lang_idx` (`lang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -92,7 +94,7 @@ CREATE TABLE `properties` (
 
 LOCK TABLES `properties` WRITE;
 /*!40000 ALTER TABLE `properties` DISABLE KEYS */;
-INSERT INTO `properties` VALUES ('Количество каналов приемника','12',1,'ru'),('Точность определения координат','15м',1,'ru'),('Точность определения скорости','0.05 м/с',1,'ru'),('Частота обновления','1 раз/с',1,'ru'),('Теплый старт','15 с',1,'ru'),('The number of receiver channels','12',1,'en'),('The accuracy of coordinates','15m',1,'en'),('The accuracy of speed','0.05 m/s',1,'en'),('Update Rate','1 time / s',1,'en'),('Warm','15',1,'en'),('Кількість каналів приймача','12',1,'ua'),('Точність визначення координат','15м',1,'ua'),('Точність визначення швидкості','0.05 м / с',1,'ua'),('Частота оновлення','1 раз / с',1,'ua'),('Теплий старт','15 з',1,'ua');
+INSERT INTO `properties` VALUES ('Diagonal display','6.1',2,'en'),('Display size','5,4 \"x 2.8\" (13,6 x 7,2 cm) diagonal, 6.1 \"(15.4 cm)',2,'en'),('Resolution','800 x 480',2,'en'),('The accuracy of coordinates','15m',1,'en'),('The accuracy of speed','0.05 m/s',1,'en'),('The number of receiver channels','12',1,'en'),('Update Rate','1 time / s',1,'en'),('Warm','15',1,'en'),('Weight','319.2 g',2,'en'),('Вага','319,2 г',2,'ua'),('Вес',' 319,2 г',2,'ru'),('Діагональ дисплея','6.1',2,'ua'),('Диагональ дисплея',' 6.1',2,'ru'),('Кількість каналів приймача','12',1,'ua'),('Количество каналов приемника','12',1,'ru'),('Размеры дисплея','5,4\" x 2,8\" (13,6 x 7,2 см); диагональ 6,1\" (15,4 см)',2,'ru'),('Разрешение дисплея :',' 800 x 480 пикселей',2,'ru'),('Роздільна здатність дисплея:','800 x 480 пікселів',2,'ua'),('Розміри дисплея','5,4 \"x 2,8\" (13,6 x 7,2 см); діагональ 6,1 \"(15,4 см)',2,'ua'),('Теплий старт','15 з',1,'ua'),('Теплый старт','15 с',1,'ru'),('Точність визначення координат','15м',1,'ua'),('Точність визначення швидкості','0.05 м / с',1,'ua'),('Точность определения координат','15м',1,'ru'),('Точность определения скорости','0.05 м/с',1,'ru'),('Частота обновления','1 раз/с',1,'ru'),('Частота оновлення','1 раз / с',1,'ua');
 /*!40000 ALTER TABLE `properties` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,6 +109,8 @@ CREATE TABLE `reviews` (
   `author` char(200) CHARACTER SET utf8 NOT NULL,
   `review` text CHARACTER SET utf8 NOT NULL,
   `goods_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `reviews_goods_id_idx` (`goods_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -117,7 +121,7 @@ CREATE TABLE `reviews` (
 
 LOCK TABLES `reviews` WRITE;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
-INSERT INTO `reviews` VALUES ('Вася','Хорошо!!',1),('Петя','Отлично',1),('Гриша','Супер',1);
+INSERT INTO `reviews` VALUES ('Вася','Хорошо!!',1,1),('Петя','Отлично',1,2),('Гриша','Супер',1,3),('Sam','sample review',2,4);
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -130,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-01 16:46:42
+-- Dump completed on 2015-11-15 16:19:12
