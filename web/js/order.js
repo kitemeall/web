@@ -33,17 +33,21 @@ document.getElementById('order_button').onclick = function () {
     console.log(body);
 
     xhr.send(body);
-
+    
+    this.disabled = true;
+    this.style.cursor = 'wait'
+    
     xhr.onreadystatechange = function () {
         if (this.readyState !== 4)
             return;
 
-
+            
         if (this.status !== 200) {
             alert('Error while sensing order');
             return;
         } else {
-            alert('Order done')
+            alert('готово!');
+            window.location = 'profile'
         }
 
     }

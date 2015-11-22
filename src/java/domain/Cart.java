@@ -1,12 +1,20 @@
 package domain;
 
 import java.util.ArrayList;
-
+import java.util.List;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+@Embeddable
 public class Cart {
-    
-    private ArrayList<CartItem> cartItemList;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List <CartItem> cartItemList = new ArrayList<CartItem>() ;
 
-    public ArrayList<CartItem> getItemList() {
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = (ArrayList<CartItem>)cartItemList;
+    }
+
+    public List<CartItem> getCartItemList() {
         return cartItemList;
     }
 

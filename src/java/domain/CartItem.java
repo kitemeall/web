@@ -1,19 +1,29 @@
 package domain;
 
 import dao.Dao;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 
+@Embeddable
+public class CartItem implements Serializable  {
 
-public class CartItem  {
+    public CartItem() {
+    }
     
     public CartItem(int id){
         goodsId = id;
         amount = 1;
     }
     
-    
+    @Transient
     private Goods goods;
+    @Column(name="AMOUNT")
     private int amount;
-    private int goodsId;
+    @Column(name="GOODS_ID")
+    private  int goodsId;
+    
     public boolean checkId(int id){
         return (id == goodsId);
     }
@@ -48,5 +58,15 @@ public class CartItem  {
     public int getId(){
         return goodsId;
     }
+
+    public int getGoodsId() {
+        return goodsId;
+    }
+
+    public Goods getGoods() {
+        return goods;
+    }
+    
+    
     
 }

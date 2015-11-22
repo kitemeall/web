@@ -26,7 +26,7 @@ public class MakeOrder extends HttpServlet {
         Cart cart = (Cart)request.getSession().getAttribute("cart");
         
         Shop.makeOrder(userName, cart, delivery, address);
-                
+        request.getSession().setAttribute("cart", null);
        
 
     }

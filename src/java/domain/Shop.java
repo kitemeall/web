@@ -30,6 +30,13 @@ public class Shop {
             boolean delivery, @NotNull String address){
         DaoHibernate.saveOrder(new Order(cart, name, delivery, address));
         
+        
+    }
+    
+    public static java.util.ArrayList<Order> getUserOrdersList(@NotNull String userName){
+        
+        return  DaoHibernate.getOrderListByUser(userName);
+        
     }
     
     

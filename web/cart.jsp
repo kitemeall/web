@@ -30,7 +30,7 @@
 
 
             <c:otherwise>   
-                <c:forEach var="item" items="${cart.getItemList()}">
+                <c:forEach var="item" items="${cart.getCartItemList()}">
 
                     <div class="main_div">
                         <div id="image">
