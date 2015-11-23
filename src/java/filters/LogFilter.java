@@ -7,25 +7,24 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
-
 
 public class LogFilter implements Filter {
 
     private FilterConfig filterConfig = null;
     final static Logger logger = Logger.getRootLogger();
 
-
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
+
+        String url = ((HttpServletRequest) request).getRequestURL().toString();
+        String queryString = ((HttpServletRequest) request).getQueryString();
         
         
-        System.out.println("FILTER WORKS!!!");
-        
-      logger.error("Thhkjjjjjjjjjjjhhjjhjhj : " );
+        logger.info("User asked for resource " + url +'?'+ queryString);
 
         chain.doFilter(request, response);
 

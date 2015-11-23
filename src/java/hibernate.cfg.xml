@@ -20,6 +20,7 @@
         
         
         <mapping class="domain.Order"/>
+         <mapping class="domain.Comment"/>
           
     </session-factory>
 </hibernate-configuration>

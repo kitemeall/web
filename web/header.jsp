@@ -57,16 +57,22 @@
                         ><a href='cart'>
                             <fmt:message key="cart" />
                         </a></li>
-                    <li
-                        <c:if test="${'history'eq param.activeTab}">
-                            class='active_tab'
+
+                    <c:if test="${not empty pageContext.request.userPrincipal}">
+                        <c:if test="${(sessionScope.cart != null) &&(! sessionScope.cart.isEmpty()) }">
+                            <li<c:if test="${'order'eq param.activeTab}">
+                                    class='active_tab'
+                                </c:if>
+                                ><a href='order'>
+                                    
+                                    <fmt:message key="make_order" />
+                                </a>  
+                            </li>
                         </c:if>
-                        ><a href='#'>
-                            <fmt:message key="history" />
-                        </a></li>
-                        <c:if test="${not empty pageContext.request.userPrincipal}">
+                    </c:if>   
+                    <c:if test="${not empty pageContext.request.userPrincipal}">
                         <li><a class='logout' >
-                            <fmt:message key="log_out" />
+                                <fmt:message key="log_out" />
                             </a>  
                         </li>
                     </c:if>    

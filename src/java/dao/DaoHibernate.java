@@ -1,13 +1,11 @@
 package dao;
 
+import domain.Comment;
 import domain.Order;
 import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
 public class DaoHibernate {
@@ -61,4 +59,46 @@ public class DaoHibernate {
         return orders;
     }
 
+    public static void saveComment(Comment comment){
+        
+        Session session = null;
+        Transaction transaction = null;
+
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.save(comment);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public static ArrayList<Comment> getComments(){
+        
+        Session session = null;
+        Transaction transaction = null;
+        ArrayList <Comment> comments = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            comments = (ArrayList<Comment>)session.createCriteria(Comment.class)
+                    .list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw e;
+        } finally {
+            session.close();
+        }
+        return comments;
+    }
 }

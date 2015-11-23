@@ -16,12 +16,14 @@
 
     </head>
     <body>
-        <jsp:include page="header.jsp" />
+        <jsp:include page="header.jsp" >
+                    <jsp:param name="activeTab" value="order" />
+        </jsp:include>            
 
         <div class="pickup">
             <div class="radio">
                 <input type="radio" name="type" id="pickup" value="pickup" checked="true"> 
-                <label for="pickup" >Cамовывоз</label> 
+                <label for="pickup" ><fmt:message key="pickup" /> </label> 
 
             </div>
             <div class="map" id="map">
@@ -42,13 +44,15 @@
             </ul>
         </div>
 
+        <br>
         <div class="delivery">
             <div class="radio">
                 <input type="radio" name="type" id="delivery" value="delivery">
-                <label for="delivery">Доставка</label> 
+                <label for="delivery"><fmt:message key="delivery" /> </label> 
             </div>	
             <input type="text" name="address" id="address" >
-            <button type="button" id="order_button">ORDER</button>
+            <br><br>
+            <button type="button" id="order_button"><fmt:message key="make_order" /></button>
         </div>
         <script src="js/order.js"></script>
         <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>

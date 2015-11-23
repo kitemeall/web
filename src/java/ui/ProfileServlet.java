@@ -1,5 +1,6 @@
 package ui;
 
+import domain.Comment;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,10 @@ public class ProfileServlet extends LangParseServlet {
         }
         
         request.setAttribute("orders", orders);
+        
+         ArrayList<Comment> comments = Shop.getComments();
+         request.setAttribute("comments", comments);
+   
 
         request.getRequestDispatcher("/profile.jsp").forward(request, response);
 

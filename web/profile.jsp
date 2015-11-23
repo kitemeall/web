@@ -13,6 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Profile</title>
         <link rel='stylesheet' type='text/css' href='css/cart.css'>
+        <link rel='stylesheet' type='text/css' href='css/profile.css'>
     </head>
 
     <body>
@@ -24,31 +25,55 @@
         <br>
         <fmt:message key="default_tab" /> - ${initParam.default_tab}
 
+        <br>
+        <br>
 
-
+        <div id="comments">
+            <c:forEach var="comment" items="${requestScope.comments}">
+                <div class="comment">
+                    <div class="comment_author">
+                        <c:out value="${comment.getUserName()}"/>
+                    </div>
+                    <div class="comment_date">
+                        <c:out value="${comment.getFormatedDate()}"/>
+                    </div>
+                    <div class="comment_text">
+                        <c:out value="${comment.getMessage()}"/>
+                    </div>
+                </div>
+            </c:forEach>
+            
+        </div>
+        <br>
+        <textarea id ='comment_text'></textarea>
+        <br>
+        <button id ='comment_button'>comment</button>
+        <br>
         <br>
 
         <c:set var="orders" value="${requestScope.orders}"/>
 
         <c:forEach var="order" items="${orders}">
-            номер заказа <c:out value="${order.getId()}"/>
+            <fmt:message key="order_number" />
+            <c:out value="${order.getId()}"/>
             <br>
-            дата заказа <c:out value="${order.getDate()}"/>
+            <fmt:message key="order_date" />
+            <c:out value="${order.getDate()}"/>
             <br>
 
             <c:choose>
                 <c:when test="${order.isDelivery()}">
-                    Доставка до 
+                   <fmt:message key="delivery" />
                 </c:when>
                 <c:otherwise>
-                    Самовывоз из магазина 
+                    <fmt:message key="pickup" />
                 </c:otherwise>
             </c:choose>
             <c:out value="${order.getAddress()}"/>
             <br>
 
-            Общая стоимоть заказа $
-            <c:out value="${order.getTotalPrice()}"/>
+            <fmt:message key="total_cost" />
+            $<c:out value="${order.getTotalPrice()}"/>
 
 
 
@@ -74,7 +99,9 @@
                         <div id="price">$<c:out value="${item.getPrice()}"/> </div>
                         <div class="amount">
 
-                            <div class="amount_value"><c:out value="${item.getAmount()}"/></div>
+                           
+                                <fmt:message key="count" />
+                                <c:out value="${item.getAmount()}"/>
 
                         </div>
                     </div>
@@ -84,5 +111,6 @@
 
         </c:forEach>
 
+                <script src='js/comment.js'></script>           
     </body>
 </html>
