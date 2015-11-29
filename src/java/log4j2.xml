@@ -7,11 +7,21 @@
         <File name="File" fileName="log/shop.log" immediateFlush="true" append="false">
             <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss}  %-5level - %msg%n"/>
         </File>
+        <File name="ErrorFile" fileName="log/Error.log" immediateFlush="true" append="false">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss}  %-5level - %msg%n"/>
+        </File>
     </Appenders>
+    
     <Loggers>
-        <Root level="debug">
-            <AppenderRef ref="Console" />
-            <AppenderRef ref="File"/>
+       
+        <Root name="filters.LogFilter" level="ERROR">
+            <AppenderRef ref="ErrorFile" level="ERROR"/>
         </Root>
+        
+        
+        <Logger name="newLogger" level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Logger>
     </Loggers>
 </Configuration>

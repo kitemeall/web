@@ -10,20 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URLDecoder;
+import org.apache.log4j.Logger;
 
 @WebServlet( name="MakeOrder", urlPatterns = {"/make_order"})
-public class MakeOrder extends HttpServlet {
-
+public class MakeOrder extends LangParseServlet {
+    final static Logger logger = Logger.getLogger("newLogger");
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        parseLang(request, response);
         request.setCharacterEncoding("UTF-8");
         
         String userName = request.getUserPrincipal().getName();
         boolean delivery = Boolean.parseBoolean(request.getParameter("delivery"));
         String address = request.getParameter("address");
         Cart cart = (Cart)request.getSession().getAttribute("cart");
+        logger.info("making order for user " + userName + "address " + address +"cart " + cart);
         
         Shop.makeOrder(userName, cart, delivery, address);
         request.getSession().setAttribute("cart", null);

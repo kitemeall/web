@@ -60,8 +60,17 @@ public class Comment {
         this.id = id;
     }
 
-    public String getFormatedDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    public String getFormatedDate(String lang) {
+        if (lang == null)
+                lang = "ru";
+        SimpleDateFormat dateFormat;
+        if (lang.equals("en")) {
+            dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        } else {
+             dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+        }
+
         return dateFormat.format(this.getDate());
     }
 

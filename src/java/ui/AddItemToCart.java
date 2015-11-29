@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 @WebServlet(name = "AddItemToCart", urlPatterns = {"/addItem"})
 public class AddItemToCart extends HttpServlet {
 
-    final static Logger logger = Logger.getRootLogger();
+    final static Logger logger = Logger.getLogger("newLogger");
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

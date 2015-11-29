@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 public class LogFilter implements Filter {
 
     private FilterConfig filterConfig = null;
-    final static Logger logger = Logger.getRootLogger();
+    final static Logger logger = Logger.getLogger("newLogger");
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,

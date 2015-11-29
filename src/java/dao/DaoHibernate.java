@@ -3,6 +3,7 @@ package dao;
 import domain.Comment;
 import domain.Order;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,6 +13,7 @@ public class DaoHibernate {
 
     private DaoHibernate() {
     }
+    final static Logger logger = Logger.getLogger("newLogger");
 
     public static void saveOrder(Order order) {
         //save this order there
@@ -20,16 +22,22 @@ public class DaoHibernate {
         Transaction transaction = null;
 
         try {
+            logger.info("openning session");
             session = HibernateUtil.getSessionFactory().openSession();
+            logger.info("beginning transaction");
             session.beginTransaction();
+            logger.info("saving order");
             session.save(order);
             session.getTransaction().commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("error ", e);
+
             throw e;
         } finally {
+            logger.info("closing session");
             session.close();
         }
     }
@@ -38,20 +46,22 @@ public class DaoHibernate {
 
         Session session = null;
         Transaction transaction = null;
-        ArrayList <Order> orders = null;
+        ArrayList<Order> orders = null;
+        logger.info("gerring order list for user =" +userName);
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
-            orders = (ArrayList<Order>)session.createCriteria(Order.class)
+            orders = (ArrayList<Order>) session.createCriteria(Order.class)
                     .add(Restrictions.eq("userName", userName))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)  
+                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
                     .list();
             session.getTransaction().commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("error ", e);
             throw e;
         } finally {
             session.close();
@@ -59,11 +69,10 @@ public class DaoHibernate {
         return orders;
     }
 
-    public static void saveComment(Comment comment){
-        
+    public static void saveComment(Comment comment) {
         Session session = null;
         Transaction transaction = null;
-
+        logger.info("saving comment" + comment);
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -73,28 +82,31 @@ public class DaoHibernate {
             if (transaction != null) {
                 transaction.rollback();
             }
+          logger.error("error ", e);
             throw e;
         } finally {
             session.close();
         }
     }
-    
-    public static ArrayList<Comment> getComments(){
-        
+
+    public static ArrayList<Comment> getComments() {
+
         Session session = null;
         Transaction transaction = null;
-        ArrayList <Comment> comments = null;
+        ArrayList<Comment> comments = null;
+        logger.info("getting comments");
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
-            comments = (ArrayList<Comment>)session.createCriteria(Comment.class)
+            comments = (ArrayList<Comment>) session.createCriteria(Comment.class)
                     .list();
             session.getTransaction().commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
+            logger.error("error " + e);
             throw e;
         } finally {
             session.close();

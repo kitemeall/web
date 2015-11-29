@@ -15,7 +15,7 @@
         <link rel='stylesheet' type='text/css' href='css/cart.css'>
         <link rel='stylesheet' type='text/css' href='css/profile.css'>
     </head>
-
+    
     <body>
         <jsp:include page="header.jsp" >
             <jsp:param name="activeTab" value="profile" />
@@ -26,6 +26,7 @@
         <fmt:message key="default_tab" /> - ${initParam.default_tab}
 
         <br>
+        <div id="time"></div>
         <br>
 
         <div id="comments">
@@ -35,7 +36,7 @@
                         <c:out value="${comment.getUserName()}"/>
                     </div>
                     <div class="comment_date">
-                        <c:out value="${comment.getFormatedDate()}"/>
+                        <c:out value="${comment.getFormatedDate(requestScope.lang)}"/>
                     </div>
                     <div class="comment_text">
                         <c:out value="${comment.getMessage()}"/>
