@@ -5,6 +5,7 @@
         <group>
             <file>file:/home/ri/workspace/NetBeansProjects/Shop/web/WEB-INF/web.xml</file>
             <file>file:/home/ri/workspace/NetBeansProjects/Shop/src/java/filters/LogFilter.java</file>
+            <file>file:/home/ri/workspace/NetBeansProjects/Shop/src/java/domain/Shop.java</file>
             <file>file:/home/ri/workspace/NetBeansProjects/Shop/src/java/log4j2.xml</file>
             <file>file:/home/ri/workspace/NetBeansProjects/Shop/src/java/ui/LangParseServlet.java</file>
             <file>file:/home/ri/workspace/NetBeansProjects/Shop/src/java/ui/AddItemToCart.java</file>

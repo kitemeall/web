@@ -23,9 +23,10 @@ public class LogFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String queryString = httpRequest.getQueryString();
         String uri = httpRequest.getRequestURI();
+        String ip = httpRequest.getRemoteAddr();
         String activePage = (String)httpRequest.getSession().getAttribute("active_page");
         
-        logger.info("User asked for resource " + uri +'?'+ queryString + " from page " +activePage );
+        logger.info("User ip= " + ip + " asked for resource " + uri +'?'+ queryString + " from page " +activePage );
         chain.doFilter(request, response);
 
     }

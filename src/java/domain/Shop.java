@@ -11,7 +11,7 @@ public class Shop {
     final static Logger logger = Logger.getLogger("newLogger");
 
     public static Goods getGoodsById(int id, String lang) {
-        logger.info("detting goods by id = " + id + "and lang = "+lang );
+        logger.info("getting goods by id = " + id + "and lang = "+lang );
         return Dao.getGoodsById(id, lang);
     }
 
