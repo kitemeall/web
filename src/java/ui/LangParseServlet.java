@@ -33,6 +33,8 @@ public class LangParseServlet extends HttpServlet {
             setLang(request, response, lang);
             
         }
+        
+        request.getSession().setAttribute("active_page" , request.getRequestURI());
 
     }
     

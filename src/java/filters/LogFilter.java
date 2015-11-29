@@ -20,12 +20,12 @@ public class LogFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
 
-        String url = ((HttpServletRequest) request).getRequestURL().toString();
-        String queryString = ((HttpServletRequest) request).getQueryString();
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        String queryString = httpRequest.getQueryString();
+        String uri = httpRequest.getRequestURI();
+        String activePage = (String)httpRequest.getSession().getAttribute("active_page");
         
-        
-        logger.info("User asked for resource " + url +'?'+ queryString);
-
+        logger.info("User asked for resource " + uri +'?'+ queryString + " from page " +activePage );
         chain.doFilter(request, response);
 
     }
