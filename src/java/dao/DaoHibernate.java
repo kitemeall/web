@@ -49,7 +49,9 @@ public class DaoHibernate {
         ArrayList<Order> orders = null;
         logger.info("gerring order list for user =" +userName);
         try {
+            logger.debug("openning session");
             session = HibernateUtil.getSessionFactory().openSession();
+            logger.debug("beginning transaction");
             session.beginTransaction();
 
             orders = (ArrayList<Order>) session.createCriteria(Order.class)
@@ -61,7 +63,7 @@ public class DaoHibernate {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("error ", e);
+            logger.error("Error while getting order list by user ", e);
             throw e;
         } finally {
             session.close();

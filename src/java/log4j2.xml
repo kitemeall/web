@@ -19,7 +19,7 @@
         </Root>
         
         
-        <Logger name="newLogger" level="INFO">
+        <Logger name="newLogger" level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Logger>

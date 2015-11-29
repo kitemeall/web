@@ -21,6 +21,11 @@
             <jsp:param name="activeTab" value="profile" />
         </jsp:include>
         <br>
+        
+        <div id="time"></div>
+        <br>
+        
+        
         <fmt:message key="your_name" /> - ${pageContext.request.userPrincipal.name}
         <br>
         <fmt:message key="default_tab" /> - ${initParam.default_tab}
@@ -112,6 +117,8 @@
 
         </c:forEach>
 
-                <script src='js/comment.js'></script>           
+                <script src='js/comment.js'></script> 
+                <script src='js/time.js'></script>           
+
     </body>
 </html>

@@ -18,8 +18,8 @@ public class CommentServlet extends LangParseServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        parseLang(request, response);
         request.setCharacterEncoding("UTF-8");
+        parseLang(request, response);
         String userName = request.getUserPrincipal().getName();
         String commentMsg = request.getParameter("comment");
         logger.info("user " + userName + "adds comment: "+ commentMsg);

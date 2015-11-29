@@ -18,9 +18,7 @@ public class MakeOrder extends LangParseServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        parseLang(request, response);
-        request.setCharacterEncoding("UTF-8");
-        
+        request.setCharacterEncoding("UTF-8");        
         String userName = request.getUserPrincipal().getName();
         boolean delivery = Boolean.parseBoolean(request.getParameter("delivery"));
         String address = request.getParameter("address");
