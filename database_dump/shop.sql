@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.27, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.46, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: shop
 -- ------------------------------------------------------
--- Server version	5.6.27-0ubuntu1
+-- Server version	5.5.46-0ubuntu0.14.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `Comment` (
   `message` longtext,
   `userName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `Comment` (
 
 LOCK TABLES `Comment` WRITE;
 /*!40000 ALTER TABLE `Comment` DISABLE KEYS */;
-INSERT INTO `Comment` VALUES (44,'2015-11-23 11:38:40','','tomcat'),(45,'2015-11-23 11:39:58','коаываываываыва','tomcat'),(46,'2015-11-23 18:42:14','комментария','tomcat'),(47,'2015-11-23 18:50:32','коммнте','tomcat'),(48,'2015-11-23 18:52:07','fdff','tomcat'),(49,'2015-11-23 18:52:16','dd','tomcat'),(50,'2015-11-23 18:53:38','ddd','tomcat'),(51,'2015-11-23 18:53:47','dd','tomcat'),(52,'2015-11-23 19:09:02','ffsdfsdf','tomcat'),(53,'2015-11-23 19:09:07','Ð¿ÑÑÑÑÐ¿Ð¿','tomcat');
+INSERT INTO `Comment` VALUES (58,'2015-11-29 14:21:53','коммент','user'),(59,'2015-11-29 14:22:19','коме','user'),(60,'2015-11-29 14:53:16','аываыва','user'),(61,'2015-11-29 14:55:25','аавйцуйцу','user'),(62,'2015-11-29 16:30:35','dasdasdasdфыавфаавфыв','user');
 /*!40000 ALTER TABLE `Comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,7 @@ CREATE TABLE `ORDERS` (
   `DELIVERY` bit(1) DEFAULT NULL,
   `USER_NAME` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ORDER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `ORDERS` (
 
 LOCK TABLES `ORDERS` WRITE;
 /*!40000 ALTER TABLE `ORDERS` DISABLE KEYS */;
-INSERT INTO `ORDERS` VALUES (18,'Освобождения 25','2015-11-22 18:14:23','','tomcat'),(19,'Ветеранов 130','2015-11-22 18:15:45','\0','tomcat'),(20,'Ветеранов 130','2015-11-22 18:39:05','\0','tomcat'),(21,'Ветеранов 130','2015-11-22 18:57:30','\0','tomcat'),(22,' Невский 21','2015-11-22 19:03:38','\0','tomcat'),(23,'Казансая 25','2015-11-22 19:05:14','\0','tomcat'),(24,' Невский 21','2015-11-22 19:07:14','\0','tomcat'),(25,' Невский 21','2015-11-22 19:25:45','\0','tomcat'),(26,'fdsafsadfasdfsdaf','2015-11-23 08:44:33','','tomcat'),(27,'Казансая 25','2015-11-23 11:37:29','\0','tomcat'),(28,'Ветеранов 130','2015-11-23 12:05:36','\0','tomcat'),(29,'Ветеранов 130','2015-11-23 17:49:38','\0','tomcat'),(30,'лэти','2015-11-23 18:41:50','','tomcat');
+INSERT INTO `ORDERS` VALUES (33,'Ветеранов 130','2015-11-29 14:22:45','\0','user'),(34,'аыфваыва','2015-11-29 14:55:06','','user'),(35,' Невский 21','2015-11-29 16:16:42','\0','user'),(36,'афафывфывфывфыв','2015-11-29 16:31:51','','user');
 /*!40000 ALTER TABLE `ORDERS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `Order_cartItemList` (
 
 LOCK TABLES `Order_cartItemList` WRITE;
 /*!40000 ALTER TABLE `Order_cartItemList` DISABLE KEYS */;
-INSERT INTO `Order_cartItemList` VALUES (18,3,1),(18,2,2),(19,1,1),(19,1,2),(20,3,1),(20,1,2),(21,2,1),(22,8,1),(22,6,2),(23,1,1),(24,1,2),(25,3,2),(26,1,1),(27,1,1),(28,2,1),(29,2,1),(30,1,1),(30,1,2);
+INSERT INTO `Order_cartItemList` VALUES (33,2,1),(34,2,1),(35,3,1),(36,3,2);
 /*!40000 ALTER TABLE `Order_cartItemList` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -213,4 +213,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-29 11:24:22
+-- Dump completed on 2015-11-29 16:45:39
